@@ -14,6 +14,8 @@ Zu Beginn des Programmes empfiehlt es sich etwas anzuzeigen, damit wir wissen, d
 basic.showIcon(IconNames.Heart)
 ```
 
+Lade das Programm auf den micro:bit und schau, was passiert. **[Anleitung](https://makecode.microbit.org/device/usb/webusb)**
+
 ## {Step 2}
 
 Bye!

@@ -8,11 +8,14 @@ Das Spiel wertet mit Hilfe des vom micro:bit gesendeten Werts automatisch aus we
 
 ## {Step 1}
 
-Zu Beginn des Programmes empfiehlt es sich etwas anzuzeigen, damit wir wissen, dass das Programm bzw. der micro:bit gestartet ist. Füge dazu aus der Kategorie ``||basic:Basic||`` in den ``||basic:on start||`` Block den ``||basic:show icon||`` Block ein und wähle ein Symbol aus.
+Zu Beginn des Programmes empfiehlt es sich etwas anzuzeigen, damit wir wissen, dass das Programm bzw. der micro:bit gestartet ist. Füge dazu aus der Kategorie ``||basic:Grundlagen||`` in den ``||basic:beim Start||`` Block den ``||basic:zeige Symbol||`` Block ein und wähle ein Symbol aus.
 
 ```blocks
 basic.showIcon(IconNames.Heart)
 ```
+
+Lade das Programm auf den micro:bit und schau, was passiert. **[Anleitung](https://makecode.microbit.org/device/usb/webusb)**
+
 
 ## {Step 2}
 

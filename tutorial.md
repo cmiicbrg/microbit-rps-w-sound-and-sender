@@ -12,9 +12,25 @@ At the beginning of the program it is advisable to display something so that we 
 
 Load the program onto the micro:bit and see what happens. **[Instructions](https://makecode.microbit.org/device/usb/webusb)**
 
+```validation.global
+# BlocksExistValidator
+```
+
 ```blocks
 // @validate-exists
+// @highlight
 basic.showIcon(IconNames.Heart)
+```
+
+## {Step 3}
+
+Click on the ``||input:Input||`` category in the Toolbox. Drag the ``||input:on shake||`` block out to the workspace. This block will run the code inside it when the micro:bit is shaken.
+
+```blocks
+// @highlight
+input.onGesture(Gesture.Shake, function() {
+    
+})
 ```
 
 ## {Step 2}
@@ -28,9 +44,9 @@ Now we need to make a variable to keep track of whether we have a Rock, Paper or
 Click on the ``||variables:Variables||`` category in the Toolbox again. You'll notice that there are some new blocks that have appeared. Drag a ``||variables:set hand||`` block into the ``||input:on shake||`` block. We'll start our Rock Paper Scissors game when we shake 👋 our micro:bit.
 
 ```blocks
-// @validate-exists
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
+// @highlight
     hand = 0
 })
 ```
@@ -42,6 +58,7 @@ Click on the ``||math:Math||`` category in the Toolbox. Drag a ``||math:pick ran
 ```blocks
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
+// @highlight
     hand = randint(1, 3)
 })
 ```
@@ -54,6 +71,7 @@ Click on the ``||logic:Logic||`` category in the Toolbox. Drag the ``||logic:if 
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (true) {
      
     } else {

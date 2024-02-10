@@ -49,5 +49,8 @@
     "emmet.includeLanguages": {
         "javascript": "javascriptreact",
         "vue-html": "html"
-    }
+    },
+    "markdown-preview-enhanced.enableHTML5Embed": true,
+    "markdown-preview-enhanced.enableScriptExecution": true,
+    "markdown-preview-enhanced.enableTypographer": false
 }

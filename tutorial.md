@@ -1,16 +1,16 @@
-# Schere, Stein, Papier
+# Rock, Paper, Scissors
 
 ## {Introduction @unplugged}
 
-Wir werden hier das Spiel Schere, Stein, Papier programmieren.
+We are going to program the game Rock, Paper, Scissors.
 
-Das Spiel wertet mit Hilfe des vom micro:bit gesendeten Werts automatisch aus wer gewonnen hat und zählt mit wie oft man selbst schon gewonnen hat.
+The game automatically evaluates who has won with the help of the value sent by the micro:bit and counts how often you have already won.
 
 ## {Step 1}
 
-Zu Beginn des Programmes empfiehlt es sich etwas anzuzeigen, damit wir wissen, dass das Programm bzw. der micro:bit gestartet ist. Füge dazu aus der Kategorie ``||basic:Basic||`` in den ``||basic:on start||`` Block den ``||basic:show icon||`` Block ein und wähle ein Symbol aus.
+At the beginning of the program it is advisable to display something so that we know that the program or the micro:bit has started. To do this, add the ``||basic:show icon||`` block from the ``||basic:Basic||`` category to the ``||basic:on start||`` block and select a symbol.
 
-Lade das Programm auf den micro:bit und schau, was passiert. **[Anleitung](https://makecode.microbit.org/device/usb/webusb)**
+Load the program onto the micro:bit and see what happens. **[Instructions](https://makecode.microbit.org/device/usb/webusb)**
 
 ```blocks
 basic.showIcon(IconNames.Heart)

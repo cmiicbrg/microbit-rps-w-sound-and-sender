@@ -17,7 +17,7 @@ Load the program onto the micro:bit and see what happens. **[Instructions](https
 basic.showIcon(IconNames.Heart)
 ```
 
-## {Step 2}
+## {Step }
 
 Click on the ``||input:Input||`` category in the Toolbox. Drag the ``||input:on shake||`` block out to the workspace. This block will run the code inside it when the micro:bit is shaken.
 
@@ -28,9 +28,9 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 2}
+## {Step }
 
-Now we need to make a variable to keep track of whether we have a Rock, Paper or Scissors in our hand. A variable is a container for storing values. Click on the ``||variables:Variables||`` category in the Toolbox. Click on the Make a Variable button. Give your new variable the name "hand" and click Ok.
+Now we need to make a variable to keep track of whether we have a Rock, Paper or Scissors in our hand. A variable is a container for storing values. Click on the ``||variables:Variables||`` category in the Toolbox. Click on the ``|Make a Variable...|`` button. Give your new variable the name "hand" and click Ok.
 
 ![A animation that shows how to create a variable](/static/mb/projects/rock-paper-scissors/newvar.gif)
 
@@ -237,6 +237,223 @@ When you're happy with your code, disconnect the micro:bit by unplugging the USB
 
 ## {Step 16}
 
+To use the radio, we need to set the group number. Click on the ``||radio:Radio||`` category in the Toolbox. Drag the ``||radio:radio set group||`` block and drop it into the ``||basic:on start||`` block.
+Instead of 0 or 88 you should choose any number between 0 and 255. This number is used to identify the group of micro:bits that can communicate with each other. If you want to communicate with a micro:bit in another group, you will need to change the group number on both micro:bits.
+
+```blocks
+basic.showIcon(IconNames.Heart)
+// @highlight
+radio.setGroup(88)
+```
+
+## {Step }
+
+Now we need to create some more variables.
+
+- "winCount"  to keep track of how many times we have won
+- "otherHand" to keep track of the other player's hand
+- "mayReceive" to keep track of whether we are allowed to receive a message
+
+Click on the ``||variables:Variables||`` category in the Toolbox. Click on the ``|Make a Variable|`` button. Create the variables "winCount", "otherHand" and "mayReceive".
+
+![A animation that shows how to create a variable](/static/mb/projects/rock-paper-scissors/newvar.gif)
+
+## {Step }
+
+After starting the game, we need to set the variable "mayReceive" to true. This will allow us to receive the other player's hand.
+
+Click on the ``||variables:Variables||`` category in the Toolbox. Drag the ``||variables:set mayReceive to||`` block and drop it into the ``||basic:on start||`` block. Go to the category ``||logic:Logic||`` and drag the ``||logic:true||`` block into the ``||variables:set mayReceive to||`` block instead of the ``||Math:0||``.
+
+```blocks
+basic.showIcon(IconNames.Heart)
+radio.setGroup(88)
+// @highlight
+mayReceive = true
+```
+
+## {Step}
+
+Button A will be used to start one round of the game. When we press button A, we set the variable "mayReceive" to true and the variable "hand" to 0. We also show a check mark on the LED screen.
+
+Click on the ``||input:Input||`` category in the Toolbox. Drag the ``||input:on button A pressed||`` block and drop it into the workspace.
+
+Duplicate the ``||variables:set mayReceive to||`` block from the ``||basic:on start||`` by right-clicking on it and selecting **Duplicate**. Move the duplicated block into the ``||input:on button A pressed||`` block.
+
+You should know by now how to set the variable "hand" to 0 and show a check mark on the LED screen.
+
+```blocks
+// @highlight
+input.onButtonPressed(Button.A, function () {
+    mayReceive = true
+    hand = 0
+    basic.showIcon(IconNames.Yes)
+})
+```
+
+## {Step }
+
+When the buttons A and B are pressed together, we will reset the game.
+
+Set the variables:
+
+- "mayReceive" to true
+- "hand" to 0
+- "winCount" to 0.
+
+Show a heart on the LED screen.
+
+The easiest way to accomplish this is to right-click on the ``||input:on button A pressed||`` block and select **Duplicate**. Then right-click on the **A** in the new block and select **AB**.
+
+```blocks
+// @highlight
+input.onButtonPressed(Button.AB, function () {
+    mayReceive = true
+    hand = 0
+    basic.showIcon(IconNames.Heart)
+    winCount = 0
+})
+```
+
+## {Step }
+
+When button B is pressed, we will show the number of times we have won.
+
+Click on the ``||input:Input||`` category in the Toolbox. Drag the ``||input:on button B pressed||`` block and drop it into the workspace. Click on the ``||basic:Basic||`` category in the Toolbox. Drag a ``||basic:show number||`` block out and drop it into the ``||input:on button B pressed||`` block.
+Instead of 0, drag the ``||variables:winCount||`` block into the ``||basic:show number||`` block.
+
+```blocks
+input.onButtonPressed(Button.B, function () {
+// @highlight
+    basic.showNumber(winCount)
+})
+```
+
+## {Time to test! @showdialog}
+
+### Time to test
+
+After every step where you could see something that has changed you should test your program. Connect the micro:bit to your computer using an USB cable and make sure WebUSB is connected. Click the ``|Download|`` button to transfer the code to the micro:bit. Test the Buttons A, B, A+B and shake the micro:bit to see if the game works as expected.
+
+## {Step }
+
+After shaking the micro:bit, we will also have to send the number of the hand we have chosen.
+
+Use the ``||radio:radio send number||`` block to send the number of the hand we have chosen. This block should be placed at the end of the ``||input:on shake||`` block. Replace the **0** with the variable **hand**.
+
+```blocks
+input.onGesture(Gesture.Shake, function () {
+    hand = randint(1, 3)
+    if (hand == 1) {
+        basic.showIcon(IconNames.SmallSquare)
+    } else if (hand == 2) {
+        basic.showIcon(IconNames.Square)
+    } else {
+        basic.showIcon(IconNames.Scissors)
+    }
+// @highlight
+    radio.sendNumber(hand)
+})
+```
+
+## {Step }
+
+When we receive a number from the other player, we will first have to check if we are allowed to receive a message.
+
+Add the ``||radio:on radio received||``. Add an ``||logic:if||`` block inside the ``||radio:on radio received||`` block. Replace the logic value **true** with the variable **mayReceive**.
+
+```blocks
+radio.onReceivedNumber(function (receivedNumber) {
+// @highlight
+    if (mayReceive) {
+        
+    }
+})
+```
+
+## {Step }
+
+Inside the if-Statement set the variable "otherHand" to the number we received and set the variable "mayReceive" to false.
+
+To set the variable "otherHand" to the number we received, drag the ``||variables:set otherHand to||`` block into the if-Statement. Replace the **0** with the variable **receivedNumber**. You get the **receivedNumber** block from the ``||radio:on radio received||`` block by dragging it out.
+
+```blocks
+radio.onReceivedNumber(function (receivedNumber) {
+    if (mayReceive) {
+// @highlight
+        otherHand = receivedNumber
+// @highlight
+        mayReceive = false
+    }
+})
+```
+
+## {Step }
+
+We may have received a number from the other player before we have chosen our hand. We will have to wait until we have chosen our hand (i.e. shaken the micro:bit) before we continue.
+
+From ``||loops:Loops||`` drag a ``||loops:while||`` block and drop it into the if-Statement. Replace **false** with a ``||logic:0 = 0||`` comparison block and replace the first **0** with the variable **hand**.
+
+Add a ``||basic:pause||`` block inside the ``||loops:while||`` block, and set the pause time to 500 ms.
+
+Since we wouldn't see our own hand on the LED screen if we received the other hand immediately after shaking our own micro:bit, we will add another ``||basic:pause||`` block after the ``||loops:while||`` block and set the pause time to 500 ms.
+
+```blocks
+radio.onReceivedNumber(function (receivedNumber) {
+    if (mayReceive == true) {
+        otherHand = receivedNumber
+        mayReceive = false
+// @highlight
+        while (hand == 0) {
+            basic.pause(500)
+        }
+// @highlight
+        basic.pause(500)
+    }
+})
+```
+
+## {Step }
+
+Now we have to compare the two hands and determine the winner.
+
+```blocks
+radio.onReceivedNumber(function (receivedNumber) {
+    if (mayReceive) {
+        otherHand = receivedNumber
+        mayReceive = false
+        while (hand == 0) {
+            basic.pause(500)
+        }
+        basic.pause(500)
+// @highlight
+        if (hand == otherHand) {
+            basic.showString("Draw")
+        } else if (hand == 1 && otherHand == 2) {
+            basic.showString("Lost")
+        } else if (hand == 2 && otherHand == 3) {
+            basic.showString("Lost")
+        } else if (hand == 3 && otherHand == 1) {
+            basic.showString("Lost")
+        } else {
+            basic.showString("Won")
+            winCount = winCount + 1
+        }
+    }
+})
+```
+
+## {Congratulations! You have completed the Rock, Paper, Scissors game. @showdialog}
+
+### Time to play
+
+Now find someone to play with. You will need two micro:bits to play the game. Agree on a radio group number and set the same group number on both micro:bits, by changing the number in the ``||radio:radio set group||`` block.
+
+Shake your micro:bit to choose your hand, your friend will do the same. After you have both chosen your hands, the micro:bits will compare the hands and show the result on the LED screen.
+
+### Congratulations! You have completed the Rock, Paper, Scissors game
+
+When you're happy with your code, once again disconnect the micro:bit by unplugging the USB cable, click the ``|Download|`` button to download the code to your computer. Upload the .hex file in the assignment in your learning management system.
+
 #### Metadata (used for search, rendering)
 
 * for PXT/microbit
@@ -245,5 +462,5 @@ When you're happy with your code, disconnect the micro:bit by unplugging the USB
 
 ```validation.global
 # BlocksExistValidator
-* markers: validate-exists
+    * enabled: false
 ```

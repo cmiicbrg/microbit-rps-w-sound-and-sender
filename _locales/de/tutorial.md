@@ -30,7 +30,7 @@ input.onGesture(Gesture.Shake, function() {
 
 ## {Schritt 2}
 
-Nun benötigen wir eine Variable, um zu verfolgen, ob wir Schere, Stein oder Papier in der Hand haben. Eine Variable ist ein Behälter, um Werte zu speichern. Klicke in der Werkzeugkiste auf die Kategorie ``||variables:Variablen||``. Klicke auf den Button „Variable erstellen“. Gib deiner neuen Variable den Namen „hand“ und klicke auf OK.
+Nun benötigen wir eine Variable, um zu verfolgen, ob wir Schere, Stein oder Papier in der Hand haben. Eine Variable ist ein Behälter, um Werte zu speichern. Klicke in der Werkzeugkiste auf die Kategorie ``||variables:Variablen||``. Klicke auf den Button ``|Erstelle eine Variable|``. Gib deiner neuen Variable den Namen „hand“ und klicke auf OK.
 
 ![Eine Animation, die zeigt, wie man eine Variable erstellt](/static/mb/projects/rock-paper-scissors/newvar.gif)
 

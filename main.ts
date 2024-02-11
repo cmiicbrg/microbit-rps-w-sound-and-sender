@@ -1,5 +1,5 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    if (mayReceive == true) {
+    if (mayReceive) {
         otherHand = receivedNumber
         mayReceive = false
         while (hand == 0) {
@@ -38,14 +38,12 @@ input.onGesture(Gesture.Shake, function () {
     hand = randint(1, 3)
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
-        radio.sendNumber(1)
     } else if (hand == 2) {
         basic.showIcon(IconNames.Square)
-        radio.sendNumber(2)
     } else {
         basic.showIcon(IconNames.Scissors)
-        radio.sendNumber(3)
     }
+    radio.sendNumber(hand)
 })
 let winCount = 0
 let hand = 0

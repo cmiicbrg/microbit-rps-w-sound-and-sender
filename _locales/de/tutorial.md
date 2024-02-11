@@ -13,7 +13,19 @@ Zu Beginn des Programms ist es ratsam, etwas anzuzeigen, damit wir wissen, dass 
 Lade das Programm auf den micro:bit und schau, was passiert. **[Anleitung](https://makecode.microbit.org/device/usb/webusb)**
 
 ```blocks
+// @highlight
 basic.showIcon(IconNames.Heart)
+```
+
+## {Schritt 2}
+
+Klicke auf die Kategorie `||input:Eingabe||` in der Werkzeugkiste. Ziehe den `||input:wenn geschüttelt||` Block auf die Arbeitsfläche. Dieser Block wird den Code in ihm ausführen, wenn der micro:bit geschüttelt wird.
+
+```blocks
+// @highlight
+input.onGesture(Gesture.Shake, function() {
+    
+})
 ```
 
 ## {Schritt 2}
@@ -29,6 +41,7 @@ Klicke erneut auf die Kategorie ``||variables:Variablen||`` in der Werkzeugkiste
 ```blocks
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
+// @highlight
     hand = 0
 })
 ```
@@ -40,6 +53,7 @@ Klicke auf die Kategorie ``||math:Mathematik||`` in der Werkzeugkiste. Ziehe ein
 ```blocks
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
+// @highlight
     hand = randint(1, 3)
 })
 ```
@@ -52,6 +66,7 @@ Klicke auf die Kategorie ``||logic:Logik||`` in der Werkzeugkiste. Ziehe den ``|
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (true) {
      
     } else {
@@ -68,6 +83,7 @@ Aus der Kategorie ``||logic:Logik||``, ziehe einen ``||logic:0 = 0||`` Vergleich
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (0 == 0) {
      
     } else {
@@ -101,6 +117,7 @@ let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
     if (hand == 1) {
+// @highlight
         basic.showIcon(IconNames.SmallSquare)
     } else {
         
@@ -120,6 +137,7 @@ Am unteren Rand des Blocks ``||logic:wenn dann ansonsten||``, klicke auf das Plu
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
     } else if (false) {
@@ -138,6 +156,7 @@ Aus der Kategorie ``||logic:Logik||``, ziehe einen ``||logic:0 = 0||`` Vergleich
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
     } else if (0 == 0) {
@@ -156,6 +175,7 @@ Aus der Kategorie ``||variables:Variablen||``, ziehe einen ``||variables:hand||`
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
     } else if (hand == 2) {
@@ -177,6 +197,7 @@ input.onGesture(Gesture.Shake, function() {
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
     } else if (hand == 2) {
+// @highlight
         basic.showIcon(IconNames.Square)
     } else {
 
@@ -197,6 +218,7 @@ input.onGesture(Gesture.Shake, function() {
     } else if (hand == 2) {
         basic.showIcon(IconNames.Square)
     } else {
+// @highlight
         basic.showIcon(IconNames.Scissors)
     }
 })
@@ -217,3 +239,8 @@ Wenn du mit deinem Code zufrieden bist, trenne den micro:bit, indem du das USB-K
 * für PXT/microbit
 
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+
+```validation.global
+# BlocksExistValidator
+* markers: validate-exists
+```

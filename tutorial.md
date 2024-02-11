@@ -12,17 +12,12 @@ At the beginning of the program it is advisable to display something so that we 
 
 Load the program onto the micro:bit and see what happens. **[Instructions](https://makecode.microbit.org/device/usb/webusb)**
 
-```validation.global
-# BlocksExistValidator
-```
-
 ```blocks
-// @validate-exists
 // @highlight
 basic.showIcon(IconNames.Heart)
 ```
 
-## {Step 3}
+## {Step 2}
 
 Click on the ``||input:Input||`` category in the Toolbox. Drag the ``||input:on shake||`` block out to the workspace. This block will run the code inside it when the micro:bit is shaken.
 
@@ -88,6 +83,7 @@ From the ``||logic:Logic||`` category, drag a ``||logic:0 = 0||`` comparison blo
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (0 == 0) {
      
     } else {
@@ -104,6 +100,7 @@ Click on the ``||variables:Variables||`` category in the Toolbox. Drag a ``||var
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (hand == 1) {
         
     } else {
@@ -121,6 +118,7 @@ let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
     if (hand == 1) {
+// @highlight
         basic.showIcon(IconNames.SmallSquare)
     } else {
         
@@ -140,6 +138,7 @@ At the bottom of the ``||logic:if then else||`` block, click on the plus **'+'**
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
     } else if (false) {
@@ -158,6 +157,7 @@ From the ``||logic:Logic||`` category, drag a ``||logic:0 = 0||`` comparison blo
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
     } else if (0 == 0) {
@@ -176,6 +176,7 @@ From the ``||variables:Variables||`` category, drag a ``||variables:hand||`` blo
 let hand = 0;
 input.onGesture(Gesture.Shake, function() {
     hand = randint(1, 3)
+// @highlight
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
     } else if (hand == 2) {
@@ -197,6 +198,7 @@ input.onGesture(Gesture.Shake, function() {
     if (hand == 1) {
         basic.showIcon(IconNames.SmallSquare)
     } else if (hand == 2) {
+// @highlight
         basic.showIcon(IconNames.Square)
     } else {
 
@@ -217,6 +219,7 @@ input.onGesture(Gesture.Shake, function() {
     } else if (hand == 2) {
         basic.showIcon(IconNames.Square)
     } else {
+// @highlight
         basic.showIcon(IconNames.Scissors)
     }
 })
@@ -231,6 +234,8 @@ Shake your micro:bit and see if it displays the correct icon for Rock, Paper or 
 ### Hand in the first milestone of your project
 
 When you're happy with your code, disconnect the micro:bit by unplugging the USB cable, click the ``|Download|`` button to download the code to your computer. Upload the .hex file in the assignment in your learning management system.
+
+## {Step 16}
 
 #### Metadata (used for search, rendering)
 

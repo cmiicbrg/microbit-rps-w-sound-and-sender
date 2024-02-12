@@ -375,6 +375,8 @@ Innerhalb der if-Bedingung setze die Variable "otherHand" auf die Zahl, die wir 
 
 Um die Variable "otherHand" auf die empfangene Zahl zu setzen, ziehe den Block `||variables:setze otherHand auf||` in die if-Bedingung. Ersetze die **0** mit der Variable **receivedNumber**. Den Block **receivedNumber** erhältst du aus dem `||radio:wenn Zahl empfangen||` Block, indem du ihn herausziehst.
 
+Außerdem müssen wir ``||variables:mayReceive||`` auf false setzen.
+
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
     if (mayReceive) {
@@ -415,7 +417,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 
 Nun müssen wir die beiden Hände vergleichen und den Gewinner ermitteln.
 
-Füge einen `||logic:wenn dann ansonsten||` Block nach dem zweiten `||basic:pause||` Block hinzu. Verwende den `||logic:0 = 0||` Vergleichsblock aus der Kategorie `||logic:Logik||`. Ersetze die erste **0** mit der Variablen `||variables:hand||` und die zweite **0** mit der Variablen `||variables:otherHand||`.
+Füge einen `||logic:wenn dann ansonsten||` Block nach dem zweiten `||basic:pausiere||` Block hinzu. Verwende den `||logic:0 = 0||` Vergleichsblock aus der Kategorie `||logic:Logik||`. Ersetze die erste **0** mit der Variablen `||variables:hand||` und die zweite **0** mit der Variablen `||variables:otherHand||`.
 
 In diesem Fall werden wir den String "Unentschieden" auf dem LED-Bildschirm anzeigen, weil die beiden Hände gleich sind.
 
@@ -519,9 +521,9 @@ radio.onReceivedNumber(function (receivedNumber) {
 
 Es bleibt nur noch eine Möglichkeit übrig. Wenn wir nicht unentschieden gespielt und nicht verloren haben, dann haben wir gewonnen.
 
-Füge einen `||basic:zeige Text||` Block innerhalb des `||logic:sonst||` Blocks ein und ersetze **Hallo!** mit **Gewonnen**.
+Füge einen `||basic:zeige Text||` Block innerhalb des `||logic:ansonsten||` Blocks ein und ersetze **Hallo!** mit **Gewonnen**.
 
-Füge einen `||variables:ändere winCount um 1||` Block innerhalb des `||logic:sonst||` Blocks ein.
+Füge einen `||variables:ändere winCount um 1||` Block innerhalb des `||logic:ansonsten||` Blocks ein.
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {

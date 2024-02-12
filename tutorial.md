@@ -17,7 +17,7 @@ Load the program onto the micro:bit and see what happens. **[Instructions](https
 basic.showIcon(IconNames.Heart)
 ```
 
-## {Step }
+## {Step 2}
 
 Click on the ``||input:Input||`` category in the Toolbox. Drag the ``||input:on shake||`` block out to the workspace. This block will run the code inside it when the micro:bit is shaken.
 
@@ -28,13 +28,13 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step }
+## {Step 3}
 
 Now we need to make a variable to keep track of whether we have a Rock, Paper or Scissors in our hand. A variable is a container for storing values. Click on the ``||variables:Variables||`` category in the Toolbox. Click on the ``|Make a Variable...|`` button. Give your new variable the name "hand" and click Ok.
 
 ![A animation that shows how to create a variable](/static/mb/projects/rock-paper-scissors/newvar.gif)
 
-## {Step 3}
+## {Step 4}
 
 Click on the ``||variables:Variables||`` category in the Toolbox again. You'll notice that there are some new blocks that have appeared. Drag a ``||variables:set hand||`` block into the ``||input:on shake||`` block. We'll start our Rock Paper Scissors game when we shake 👋 our micro:bit.
 
@@ -46,7 +46,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 4}
+## {Step 5}
 
 Click on the ``||math:Math||`` category in the Toolbox. Drag a ``||math:pick random||`` block and drop it into the ``||variables:set hand||`` block replacing the number 0. Now when we shake our micro:bit, the variable hand will contain a random number between 1 and 3.
 
@@ -58,7 +58,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 5}
+## {Step 6}
 
 Click on the ``||logic:Logic||`` category in the Toolbox. Drag the ``||logic:if true then else||`` block out to the workspace and drop it into the ``||input:on shake||`` block under the ``||variables:set hand||`` block.
 
@@ -75,7 +75,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 6}
+## {Step 7}
 
 From the ``||logic:Logic||`` category, drag a ``||logic:0 = 0||`` comparison block and drop it into the ``||logic:if true then else||`` block replacing **true**.
 
@@ -92,7 +92,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 7}
+## {Step 8}
 
 Click on the ``||variables:Variables||`` category in the Toolbox. Drag a ``||variables:hand||`` block out and drop it into the ``||logic:0 = 0||`` comparison block replacing the first **0**.  Click on the second 0 in the comparison block and change to **1**.
 
@@ -109,7 +109,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 8}
+## {Step 9}
 
 Click on the ``||basic:Basic||`` category in the Toolbox. Drag a ``||basic:show icon||`` block out and drop it under ``||logic:if hand = 1 then||``. In the ``||basic:show icon||`` block, click on the Heart icon and instead select the small square icon to represent a 💎 Rock.
 
@@ -126,11 +126,11 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 9}
+## {Step 10}
 
 Test your code constantly. You can do this by using the simulator on the left or by downloading your code to your micro:bit and shaking it to see if it displays the correct icon. After some shaking, you should see your first small square representing a Rock.
 
-## {Step 10}
+## {Step 11}
 
 At the bottom of the ``||logic:if then else||`` block, click on the plus **'+'** sign. This will expand the code to include an ``||logic:else if||`` clause.
 
@@ -149,7 +149,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 11}
+## {Step 12}
 
 From the ``||logic:Logic||`` category, drag a ``||logic:0 = 0||`` comparison block and drop it into the open space next to the ``||logic:else if||`` clause.
 
@@ -168,7 +168,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 12}
+## {Step 13}
 
 From the ``||variables:Variables||`` category, drag a ``||variables:hand||`` block and drop it into the ``||logic:0 = 0||`` comparison block replacing the first **0**.  Click on the second 0 in the comparison block and change to **2**.
 
@@ -187,7 +187,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 13}
+## {Step 14}
 
 From the ``||basic:Basic||`` category, drag a ``||basic:show icon||`` block out and drop it under ``||logic:else if hand = 2 then||``. In the ``||basic:show icon||`` block, click on the Heart icon and instead select the large square icon to represent 📃 Paper.
 
@@ -206,7 +206,7 @@ input.onGesture(Gesture.Shake, function() {
 })
 ```
 
-## {Step 14}
+## {Step 15}
 
 Now let's deal with the last condition - if our hand variable isn't holding a 1 (Rock) or a 2 (Paper), then it must be 3 (✀ Scissors)! From the ``||basic:Basic||`` category, drag another ``||basic:show icon||`` block out and drop it into the last opening under the ``||logic:else||``.  In the ``||basic:show icon||`` block, click on the Heart icon and select the Scissors icon.
 
@@ -246,7 +246,7 @@ basic.showIcon(IconNames.Heart)
 radio.setGroup(88)
 ```
 
-## {Step }
+## {Step 17}
 
 Now we need to create some more variables.
 
@@ -258,7 +258,7 @@ Click on the ``||variables:Variables||`` category in the Toolbox. Click on the `
 
 ![A animation that shows how to create a variable](/static/mb/projects/rock-paper-scissors/newvar.gif)
 
-## {Step }
+## {Step 18}
 
 After starting the game, we need to set the variable "mayReceive" to true. This will allow us to receive the other player's hand.
 
@@ -271,7 +271,7 @@ radio.setGroup(88)
 mayReceive = true
 ```
 
-## {Step}
+## {Step 19}
 
 Button A will be used to start one round of the game. When we press button A, we set the variable "mayReceive" to true and the variable "hand" to 0. We also show a check mark on the LED screen.
 
@@ -290,7 +290,7 @@ input.onButtonPressed(Button.A, function () {
 })
 ```
 
-## {Step }
+## {Step 20}
 
 When the buttons A and B are pressed together, we will reset the game.
 
@@ -314,7 +314,7 @@ input.onButtonPressed(Button.AB, function () {
 })
 ```
 
-## {Step }
+## {Step 21}
 
 When button B is pressed, we will show the number of times we have won.
 
@@ -334,7 +334,7 @@ input.onButtonPressed(Button.B, function () {
 
 After every step where you could see something that has changed you should test your program. Connect the micro:bit to your computer using an USB cable and make sure WebUSB is connected. Click the ``|Download|`` button to transfer the code to the micro:bit. Test the Buttons A, B, A+B and shake the micro:bit to see if the game works as expected.
 
-## {Step }
+## {Step 22}
 
 After shaking the micro:bit, we will also have to send the number of the hand we have chosen.
 
@@ -355,7 +355,7 @@ input.onGesture(Gesture.Shake, function () {
 })
 ```
 
-## {Step }
+## {Step 23}
 
 When we receive a number from the other player, we will first have to check if we are allowed to receive a message.
 
@@ -370,7 +370,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 ```
 
-## {Step }
+## {Step 24}
 
 Inside the if-Statement set the variable "otherHand" to the number we received and set the variable "mayReceive" to false.
 
@@ -387,7 +387,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 ```
 
-## {Step }
+## {Step 25}
 
 We may have received a number from the other player before we have chosen our hand. We will have to wait until we have chosen our hand (i.e. shaken the micro:bit) before we continue.
 
@@ -412,7 +412,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 ```
 
-## {Step }
+## {Step 26}
 
 Now we have to compare the two hands and determine the winner.
 
@@ -441,7 +441,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 ```
 
-## {Step }
+## {Step 27}
 
 Click the **+** sign at the bottom of the ``||logic:if||`` block to add an ``||logic:else if||`` clause.
 
@@ -476,7 +476,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 ```
 
-## {Step }
+## {Step 28}
 
 Add two more ``||logic:else if||`` to the ``||logic:if||`` block by clicking the **+** sign at the bottom of the ``||logic:if||`` block.
 
@@ -516,7 +516,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 ```
 
-## {Step }
+## {Step 29}
 
 There is only one possibility left. If we haven't drawn and we haven't lost, we have won.
 
@@ -571,5 +571,5 @@ When you're happy with your code, once again disconnect the micro:bit by unplugg
 
 ```validation.global
 # BlocksExistValidator
-    * enabled: false
+    * enabled: true
 ```

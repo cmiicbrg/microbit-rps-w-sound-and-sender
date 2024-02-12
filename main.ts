@@ -16,7 +16,7 @@ radio.onReceivedNumber(function (receivedNumber) {
             basic.showString("Lost")
         } else {
             basic.showString("Won")
-            winCount = winCount + 1
+            winCount += 1
         }
     }
 })

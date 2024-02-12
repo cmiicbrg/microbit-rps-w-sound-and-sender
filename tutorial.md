@@ -416,6 +416,45 @@ radio.onReceivedNumber(function (receivedNumber) {
 
 Now we have to compare the two hands and determine the winner.
 
+Add an ``||logic:if then else||`` block after the second ``||basic:pause||`` block. Use the ``||logic:0 = 0||`` comparison block from the ``||logic:Logic||`` category. Replace the first **0** with the variable ``||Variables:hand||`` and the second **0** with the variable ``||Variables:otherHand||``.
+
+In this case, we will show the string "Draw" on the LED screen because the two hands are the same.
+
+Add a ``||basic:show string||`` block inside the ``||logic:if||`` block and replace the **Hello!** with **Draw**.
+
+```blocks
+radio.onReceivedNumber(function (receivedNumber) {
+    if (mayReceive) {
+        otherHand = receivedNumber
+        mayReceive = false
+        while (hand == 0) {
+            basic.pause(500)
+        }
+        basic.pause(500)
+// @highlight
+        if (hand == otherHand) {
+            basic.showString("Draw")
+        } else {
+
+        }
+    }
+})
+```
+
+## {Step }
+
+Click the **+** sign at the bottom of the ``||logic:if||`` block to add an ``||logic:else if||`` clause.
+
+Add an ``||logic:and||`` block inside the ``||logic:else if||`` clause. Insert a ``||logic:0 = 0||`` comparison block in both slots of the ``||logic:and||`` block.
+
+In the first comparison Block replace the first **0** with the variable ``||Variables:hand||`` and the second **0** with 1.
+
+In the second comparison Block replace the first **0** with the variable ``||Variables:otherHand||`` and the second **0** with 2.
+
+In this case we lost, because we have chosen Rock and the other player has chosen Paper.
+
+Add a ``||basic:show string||`` block inside the ``||logic:else if||`` block and replace the **Hello!** with **Lost**.
+
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
     if (mayReceive) {
@@ -430,13 +469,83 @@ radio.onReceivedNumber(function (receivedNumber) {
             basic.showString("Draw")
         } else if (hand == 1 && otherHand == 2) {
             basic.showString("Lost")
+        } else {
+
+        }
+    }
+})
+```
+
+## {Step }
+
+Add two more ``||logic:else if||`` to the ``||logic:if||`` block by clicking the **+** sign at the bottom of the ``||logic:if||`` block.
+
+Right click the ``||logic:and||`` block inside the first ``||logic:else if||`` and select **Duplicate**. Move the duplicated ``||logic:and||`` block into the second ``||logic:else if||``.
+
+Repeat the last step for the third ``||logic:else if||``.
+
+In the second ``||logic:else if||`` replace the **1** with a **2** and the **2** with a **3**.
+
+In the third ``||logic:else if||`` replace the **1** with a **3** and the **3** with a **1**.
+
+Show the string **Lost** in the second and third ``||logic:else if||``.
+
+```blocks
+radio.onReceivedNumber(function (receivedNumber) {
+    if (mayReceive) {
+        otherHand = receivedNumber
+        mayReceive = false
+        while (hand == 0) {
+            basic.pause(500)
+        }
+        basic.pause(500)
+        if (hand == otherHand) {
+            basic.showString("Draw")
+        } else if (hand == 1 && otherHand == 2) {
+// @highlight
+            basic.showString("Lost")
+        } else if (hand == 2 && otherHand == 3) {
+// @highlight
+            basic.showString("Lost")
+        } else if (hand == 3 && otherHand == 1) {
+            basic.showString("Lost")
+        } else {
+                
+        }
+    }
+})
+```
+
+## {Step }
+
+There is only one possibility left. If we haven't drawn and we haven't lost, we have won.
+
+Add a ``||basic:show string||`` block inside the ``||logic:else||`` block and replace the **Hello!** with **Won**.
+
+Add a ``||variables:change winCount by 1||`` block inside the ``||logic:else||`` block.
+
+```blocks
+radio.onReceivedNumber(function (receivedNumber) {
+    if (mayReceive) {
+        otherHand = receivedNumber
+        mayReceive = false
+        while (hand == 0) {
+            basic.pause(500)
+        }
+        basic.pause(500)
+        if (hand == otherHand) {
+            basic.showString("Draw")
+        } else if (hand == 1 && otherHand == 2) {
+            basic.showString("Lost")
         } else if (hand == 2 && otherHand == 3) {
             basic.showString("Lost")
         } else if (hand == 3 && otherHand == 1) {
             basic.showString("Lost")
         } else {
+// @highlight
             basic.showString("Won")
-            winCount = winCount + 1
+// @highlight
+            winCount += 1
         }
     }
 })
@@ -456,7 +565,7 @@ When you're happy with your code, once again disconnect the micro:bit by unplugg
 
 #### Metadata (used for search, rendering)
 
-* for PXT/microbit
+- for PXT/microbit
 
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
 

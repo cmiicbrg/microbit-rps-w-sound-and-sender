@@ -520,9 +520,9 @@ radio.onReceivedNumber(function (receivedNumber) {
 
 There is only one possibility left. If we haven't drawn and we haven't lost, we have won.
 
-Add a ``||basic:show string||`` block inside the ``||logic:else||`` block and replace the **Hello!** with **Won**.
-
 Add a ``||variables:change winCount by 1||`` block inside the ``||logic:else||`` block.
+
+Add a ``||basic:show string||`` block inside the ``||logic:else||`` block and replace the **Hello!** with **Won**.
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -543,11 +543,36 @@ radio.onReceivedNumber(function (receivedNumber) {
             basic.showString("Lost")
         } else {
 // @highlight
-            basic.showString("Won")
-// @highlight
             winCount += 1
+// @highlight
+            basic.showString("Won")
         }
     }
+})
+```
+
+## {Step 30}
+
+There is one little Bug left in our program. We have to make sure that we don't change our hand more than once in one round. We will enclose everything except the ``||radio:radio.sendNumber(hand)||`` in the ``||input:on shake||`` block with an ``||logic:if||`` block. We will only change the hand if the variable ``||variables:hand||`` is 0.
+
+Insert an ``||logic:if||`` block at the beginning of the ``||radio:radio send number||`` block.
+
+Use the ``||logic:0 = 0||`` comparison block from the ``||logic:Logic||`` category replacing the ``||true||``. Replace the first **0** with the variable ``||Variables:hand||``.
+
+```blocks
+input.onGesture(Gesture.Shake, function () {
+// @highlight
+    if (hand == 0) {
+        hand = randint(1, 3)
+        if (hand == 1) {
+            basic.showIcon(IconNames.SmallSquare)
+        } else if (hand == 2) {
+            basic.showIcon(IconNames.Square)
+        } else {
+            basic.showIcon(IconNames.Scissors)
+        }
+    }
+    radio.sendNumber(hand)
 })
 ```
 

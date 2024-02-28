@@ -230,14 +230,12 @@ input.onGesture(Gesture.Shake, function() {
 
 Schüttle deinen micro:bit und sieh nach, ob das korrekte Symbol für Stein, Papier oder Schere angezeigt wird. Wenn nicht, überprüfe deinen Code. Du kannst auch den Simulator auf der linken Seite nutzen, um deinen Code zu testen.
 
-### Reiche den ersten Meilenstein deines Projekts ein
-
-Wenn du mit deinem Code zufrieden bist, trenne den micro:bit, indem du das USB-Kabel abziehst, klicke den ``|Download|``-Button, um den Code auf deinen Computer herunterzuladen. Lade die .hex-Datei in der Aufgabe in deinem Lernmanagementsystem hoch.
-
 ## {Schritt 16}
 
 Um den Funk zu nutzen, müssen wir die Funkgruppennummer festlegen. Klicke auf die Kategorie ``||radio:Funk||`` in der Werkzeugkiste. Ziehe den ``||radio:setze Funkgruppe auf||`` Block und setze ihn in den ``||basic:beim Start||`` Block.
-Statt 0 oder 88 solltest du eine beliebige Zahl zwischen 0 und 255 wählen. Diese Zahl wird verwendet, um die Gruppe von micro:bits zu identifizieren, die miteinander kommunizieren können. Wenn du mit einem micro:bit in einer anderen Gruppe kommunizieren möchtest, musst du die Funkgruppennummer auf beiden micro:bits ändern.
+Statt 0 oder 88 solltest du eine beliebige Zahl zwischen 0 und 255 wählen, die noch nicht auf der Tafel steht. Diese Zahl wird verwendet, um die Gruppe von micro:bits zu identifizieren, die miteinander kommunizieren können. Wenn du mit einem micro:bit in einer anderen Gruppe kommunizieren möchtest, musst du die Funkgruppennummer auf beiden micro:bits ändern.
+
+Schreibe die Zahl, die du gewählt hast auf die Tafel!
 
 ```blocks
 basic.showIcon(IconNames.Heart)
@@ -421,7 +419,7 @@ Füge einen ``||logic:wenn dann ansonsten||`` Block nach dem zweiten ``||basic:p
 
 In diesem Fall werden wir den String "Unentschieden" auf dem LED-Bildschirm anzeigen, weil die beiden Hände gleich sind.
 
-Füge einen ``||basic:zeige Text||`` Block innerhalb des ``||logic:wenn||`` Blocks ein und ersetze **Hallo!** mit **Unentschieden**.
+Füge einen ``||basic:zeige Symbol||`` Block innerhalb des ``||logic:wenn||`` Blocks ein und verwende als Symbol das X (Nein).
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -434,7 +432,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.pause(500)
 // @highlight
         if (hand == otherHand) {
-            basic.showString("Unentschieden")
+            basic.showIcon(IconNames.No)
         } else {
 
         }
@@ -454,7 +452,7 @@ Im zweiten Vergleichsblock ersetze die erste **0** mit der Variablen ``||variabl
 
 In diesem Fall haben wir verloren, weil wir Stein gewählt haben und der andere Spieler Papier.
 
-Füge einen ``||basic:zeige Text||`` Block innerhalb des ``||logic:sonst wenn||`` Blocks ein und ersetze **Hallo!** mit **Verloren**.
+Füge einen ``||basic:zeige Symbol||`` Block innerhalb des ``||logic:sonst wenn||`` Blocks ein und verwende als Symbol das traurige Smiley 🙁.
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -467,9 +465,9 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.pause(500)
 // @highlight
         if (hand == otherHand) {
-            basic.showString("Unentschieden")
+            basic.showIcon(IconNames.No)
         } else if (hand == 1 && otherHand == 2) {
-            basic.showString("Verloren")
+            basic.showIcon(IconNames.Sad)
         } else {
 
         }
@@ -489,7 +487,7 @@ Im zweiten ``||logic:sonst wenn||`` ersetze die **1** durch eine **2** und die *
 
 Im dritten ``||logic:sonst wenn||`` ersetze die **1** durch eine **3** und die **3** durch eine **1**.
 
-Zeige den String **Verloren** im zweiten und dritten ``||logic:sonst wenn||``.
+Zeige ein trauriges Smiley im zweiten und dritten ``||logic:sonst wenn||``.
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -501,15 +499,15 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         basic.pause(500)
         if (hand == otherHand) {
-            basic.showString("Unentschieden")
+            basic.showIcon(IconNames.No)
         } else if (hand == 1 && otherHand == 2) {
 // @highlight
-            basic.showString("Verloren")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 2 && otherHand == 3) {
 // @highlight
-            basic.showString("Verloren")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 3 && otherHand == 1) {
-            basic.showString("Verloren")
+            basic.showIcon(IconNames.Sad)
         } else {
                 
         }
@@ -521,7 +519,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 
 Es bleibt nur noch eine Möglichkeit übrig. Wenn wir nicht unentschieden gespielt und nicht verloren haben, dann haben wir gewonnen.
 
-Füge einen ``||basic:zeige Text||`` Block innerhalb des ``||logic:ansonsten||`` Blocks ein und ersetze **Hallo!** mit **Gewonnen**.
+Füge einen ``||basic:show icon||`` Block innerhalb des ``||logic:ansonsten||`` Blocks ein und verwende ein Häckchen ✓ als Symbol.
 
 Füge einen ``||variables:ändere winCount um 1||`` Block innerhalb des ``||logic:ansonsten||`` Blocks ein.
 
@@ -535,16 +533,16 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         basic.pause(500)
         if (hand == otherHand) {
-            basic.showString("Unentschieden")
+            basic.showIcon(IconNames.No)
         } else if (hand == 1 && otherHand == 2) {
-            basic.showString("Verloren")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 2 && otherHand == 3) {
-            basic.showString("Verloren")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 3 && otherHand == 1) {
-            basic.showString("Verloren")
+            basic.showIcon(IconNames.Sad)
         } else {
 // @highlight
-            basic.showString("Gewonnen")
+            basic.showIcon(IconNames.Yes)
 // @highlight
             winCount += 1
         }
@@ -554,13 +552,13 @@ radio.onReceivedNumber(function (receivedNumber) {
 
 ## {Schritt 30}
 
-In unserem Programm ist ein kleiner Fehler übrig geblieben. Wir müssen sicherstellen, dass wir unsere Hand nicht mehr als einmal in einer Runde ändern. Wir werden alles außer dem ``||radio:radio.sendNumber(hand)||`` im Block ``||input:wenn geschüttelt||`` mit einem ``||logic:wenn||`` Block umschließen. Wir werden die Hand nur ändern, wenn die Variable ``||variables:hand||`` 0 ist.
+In unserem Programm ist ein kleiner Fehler übrig geblieben. Wir müssen sicherstellen, dass wir unsere Hand nicht mehr als einmal in einer Runde ändern. Wir werden alles außer dem ``||radio:sende Zahl über Funk||`` im Block ``||input:wenn geschüttelt||`` mit einem ``||logic:wenn||`` Block umschließen. Wir werden die Hand nur ändern, wenn die Variable ``||variables:hand||`` 0 ist.
 
 Füge einen ``||logic:wenn||`` Block am Anfang des ``||input:wenn geschüttelt||`` Blocks ein.
 
 Verwende den ``||logic:0 = 0||`` Vergleichsblock aus der Kategorie ``||logic:Logik||``. Ersetze die erste **0** mit der Variablen ``||variables:hand||``.
 
-Ziehe alles außer dem ``||radio:radio.sendNumber(hand)||`` Block in den ``||logic:wenn||`` Block.
+Ziehe alles außer dem ``||radio:sende Zahl über Funk||`` Block in den ``||logic:wenn||`` Block.
 
 ```blocks
 input.onGesture(Gesture.Shake, function () {
@@ -583,7 +581,7 @@ input.onGesture(Gesture.Shake, function () {
 
 ### Zeit zu spielen
 
-Finde jetzt jemanden zum Spielen. Du benötigst zwei micro:bits, um das Spiel zu spielen. Einigt euch auf eine Funkgruppennummer und stellt die gleiche Gruppennummer auf beiden micro:bits ein, indem ihr die Zahl im Block ``||radio:setze Funkgruppe auf||`` ändert.
+Finde jetzt jemanden zum Spielen. Du benötigst zwei micro:bits, um das Spiel zu spielen. Einigt euch auf eine der beiden Funkgruppennummern, die eure Gruppe (einer von euch beiden) auf die Tafel geschrieben hat und stellt die gleiche Gruppennummer auf beiden micro:bits ein, indem ihr die Zahl im Block ``||radio:setze Funkgruppe auf||`` ändert.
 
 Schüttle deinen micro:bit, um deine Hand zu wählen, dein Freund wird das Gleiche tun. Nachdem ihr beide eure Hände gewählt habt, werden die micro:bits die Hände vergleichen und das Ergebnis auf dem LED-Bildschirm anzeigen.
 

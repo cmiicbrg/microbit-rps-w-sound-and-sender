@@ -231,10 +231,6 @@ input.onGesture(Gesture.Shake, function() {
 
 Shake your micro:bit and see if it displays the correct icon for Rock, Paper or Scissors. If it doesn't, go back and check your code. You can also use the simulator on the left to test your code.
 
-### Hand in the first milestone of your project
-
-When you're happy with your code, disconnect the micro:bit by unplugging the USB cable, click the ``|Download|`` button to download the code to your computer. Upload the .hex file in the assignment in your learning management system.
-
 ## {Step 16}
 
 To use the radio, we need to set the group number. Click on the ``||radio:Radio||`` category in the Toolbox. Drag the ``||radio:radio set group||`` block and drop it into the ``||basic:on start||`` block.
@@ -420,7 +416,7 @@ Add an ``||logic:if then else||`` block after the second ``||basic:pause||`` blo
 
 In this case, we will show the string "Draw" on the LED screen because the two hands are the same.
 
-Add a ``||basic:show string||`` block inside the ``||logic:if||`` block and replace the **Hello!** with **Draw**.
+Add a ``||basic:show icon||`` block inside the ``||logic:if||`` block and use the X as Icon (No).
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -433,7 +429,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.pause(500)
 // @highlight
         if (hand == otherHand) {
-            basic.showString("Draw")
+            basic.showIcon(IconNames.No)
         } else {
 
         }
@@ -453,7 +449,7 @@ In the second comparison Block replace the first **0** with the variable ``||Var
 
 In this case we lost, because we have chosen Rock and the other player has chosen Paper.
 
-Add a ``||basic:show string||`` block inside the ``||logic:else if||`` block and replace the **Hello!** with **Lost**.
+Add a ``||basic:show icon||`` block inside the ``||logic:if||`` block and use the sad smiley as icon 🙁.
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -466,9 +462,9 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.pause(500)
 // @highlight
         if (hand == otherHand) {
-            basic.showString("Draw")
+            basic.showIcon(IconNames.No)
         } else if (hand == 1 && otherHand == 2) {
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else {
 
         }
@@ -488,7 +484,7 @@ In the second ``||logic:else if||`` replace the **1** with a **2** and the **2**
 
 In the third ``||logic:else if||`` replace the **1** with a **3** and the **3** with a **1**.
 
-Show the string **Lost** in the second and third ``||logic:else if||``.
+Show a sad smiley in the second and third ``||logic:else if||``.
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -500,15 +496,15 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         basic.pause(500)
         if (hand == otherHand) {
-            basic.showString("Draw")
+            basic.showIcon(IconNames.No)
         } else if (hand == 1 && otherHand == 2) {
 // @highlight
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 2 && otherHand == 3) {
 // @highlight
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 3 && otherHand == 1) {
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else {
                 
         }
@@ -522,7 +518,7 @@ There is only one possibility left. If we haven't drawn and we haven't lost, we 
 
 Add a ``||variables:change winCount by 1||`` block inside the ``||logic:else||`` block.
 
-Add a ``||basic:show string||`` block inside the ``||logic:else||`` block and replace the **Hello!** with **Won**.
+Add a ``||basic:show icon||`` block inside the ``||logic:else||`` block and use the checkmark ✓ as Icon.
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -534,18 +530,18 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         basic.pause(500)
         if (hand == otherHand) {
-            basic.showString("Draw")
+            basic.showIcon(IconNames.No)
         } else if (hand == 1 && otherHand == 2) {
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 2 && otherHand == 3) {
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 3 && otherHand == 1) {
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else {
 // @highlight
             winCount += 1
 // @highlight
-            basic.showString("Won")
+            basic.showIcon(IconNames.Yes)
         }
     }
 })

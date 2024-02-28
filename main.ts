@@ -7,15 +7,15 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         basic.pause(500)
         if (hand == otherHand) {
-            basic.showString("Draw")
+            basic.showIcon(IconNames.No)
         } else if (hand == 1 && otherHand == 2) {
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 2 && otherHand == 3) {
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else if (hand == 3 && otherHand == 1) {
-            basic.showString("Lost")
+            basic.showIcon(IconNames.Sad)
         } else {
-            basic.showString("Won")
+            basic.showIcon(IconNames.Yes)
             winCount += 1
         }
     }
@@ -24,6 +24,15 @@ input.onButtonPressed(Button.A, function () {
     mayReceive = true
     hand = 0
     basic.showIcon(IconNames.Yes)
+})
+input.onButtonPressed(Button.AB, function () {
+    mayReceive = true
+    hand = 0
+    basic.showIcon(IconNames.Heart)
+    winCount = 0
+})
+input.onButtonPressed(Button.B, function () {
+    basic.showNumber(winCount)
 })
 input.onGesture(Gesture.Shake, function () {
     hand = randint(1, 3)
@@ -35,15 +44,6 @@ input.onGesture(Gesture.Shake, function () {
         basic.showIcon(IconNames.Scissors)
     }
     radio.sendNumber(hand)
-})
-input.onButtonPressed(Button.AB, function () {
-    mayReceive = true
-    hand = 0
-    basic.showIcon(IconNames.Heart)
-    winCount = 0
-})
-input.onButtonPressed(Button.B, function () {
-    basic.showNumber(winCount)
 })
 let winCount = 0
 let hand = 0

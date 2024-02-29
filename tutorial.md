@@ -518,7 +518,7 @@ There is only one possibility left. If we haven't drawn and we haven't lost, we 
 
 Add a ``||variables:change winCount by 1||`` block inside the ``||logic:else||`` block.
 
-Add a ``||basic:show icon||`` block inside the ``||logic:else||`` block and use the checkmark ✓ as Icon.
+Add a ``||basic:show icon||`` block inside the ``||logic:else||`` block and use the happy smiley 😀 as icon.
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
@@ -541,7 +541,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 // @highlight
             winCount += 1
 // @highlight
-            basic.showIcon(IconNames.Yes)
+            basic.showIcon(IconNames.Happy)
         }
     }
 })

@@ -519,7 +519,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 
 Es bleibt nur noch eine Möglichkeit übrig. Wenn wir nicht unentschieden gespielt und nicht verloren haben, dann haben wir gewonnen.
 
-Füge einen ``||basic:show icon||`` Block innerhalb des ``||logic:ansonsten||`` Blocks ein und verwende ein Häckchen ✓ als Symbol.
+Füge einen ``||basic:show icon||`` Block innerhalb des ``||logic:ansonsten||`` Blocks ein und verwende ein ein glückliches Smiley 😀 als Symbol.
 
 Füge einen ``||variables:ändere winCount um 1||`` Block innerhalb des ``||logic:ansonsten||`` Blocks ein.
 
@@ -542,7 +542,7 @@ radio.onReceivedNumber(function (receivedNumber) {
             basic.showIcon(IconNames.Sad)
         } else {
 // @highlight
-            basic.showIcon(IconNames.Yes)
+            basic.showIcon(IconNames.Happy)
 // @highlight
             winCount += 1
         }

@@ -298,7 +298,7 @@ Set the variables:
 
 Show a heart on the LED screen.
 
-The easiest way to accomplish this is to right-click on the ``||input:on button A pressed||`` block and select **Duplicate**. Then right-click on the **A** in the new block and select **AB**.
+The easiest way to accomplish this is to right-click on the ``||input:on button A pressed||`` block and select **Duplicate**. Then click on the **A** in the new block and select **AB**.
 
 ```blocks
 // @highlight

@@ -299,7 +299,7 @@ Setze die Variablen:
 
 Zeige ein Herz auf dem LED-Bildschirm an.
 
-Der einfachste Weg, dies zu erreichen, ist, mit der rechten Maustaste auf den Block ``||input:wenn Knopf A geklickt||`` zu klicken und **Duplizieren** auszuwählen. Klicke dann mit der rechten Maustaste auf das **A** im neuen Block und wähle **A+B**.
+Der einfachste Weg, dies zu erreichen, ist, mit der rechten Maustaste auf den Block ``||input:wenn Knopf A geklickt||`` zu klicken und **Duplizieren** auszuwählen. Klicke dann auf das **A** im neuen Block und wähle **A+B**.
 
 ```blocks
 // @highlight

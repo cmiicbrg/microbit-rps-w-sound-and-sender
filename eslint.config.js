@@ -1,4 +1,5 @@
 import js from '@eslint/js'
+import stylistic from '@stylistic/eslint-plugin'
 import globals from 'globals'
 import tsParser from '@typescript-eslint/parser'
 import tsPlugin from '@typescript-eslint/eslint-plugin'
@@ -13,6 +14,9 @@ export default [
   },
   {
     files: jsFiles,
+    plugins: {
+      '@stylistic': stylistic
+    },
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -21,10 +25,20 @@ export default [
         ...globals.node
       }
     },
-    rules: {}
+    rules: {
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/comma-dangle': ['error', 'never'],
+      '@stylistic/eol-last': ['error', 'always']
+    }
   },
   {
     files: tsFiles,
+    plugins: {
+      '@typescript-eslint': tsPlugin,
+      '@stylistic': stylistic
+    },
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 'latest',
@@ -34,14 +48,16 @@ export default [
         ...globals.node
       }
     },
-    plugins: {
-      '@typescript-eslint': tsPlugin
-    },
     rules: {
-      ...tsPlugin.configs.recommended.rules
+      ...tsPlugin.configs.recommended.rules,
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/comma-dangle': ['error', 'never'],
+      '@stylistic/eol-last': ['error', 'always']
     }
   },
   {
-    ignores: ['**/*.html']
+    ignores: ['**/*.html', 'built/**', 'node_modules/**']
   }
 ]

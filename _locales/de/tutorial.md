@@ -398,7 +398,7 @@ Da wir unsere eigene Hand auf dem LED-Bildschirm nicht sehen würden, wenn wir d
 
 ```blocks
 radio.onReceivedNumber(function (receivedNumber) {
-    if (mayReceive == true) {
+    if (mayReceive) {
         otherHand = receivedNumber
         mayReceive = false
 // @highlight

@@ -371,7 +371,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 
 Innerhalb der if-Bedingung setze die Variable "otherHand" auf die Zahl, die wir erhalten haben, und setze die Variable "mayReceive" auf falsch.
 
-Um die Variable "otherHand" auf die empfangene Zahl zu setzen, ziehe den Block ``||variables:setze otherHand auf||`` in die ``||logic:wenn||``-Bedingung. Ersetze die **0** mit der Variable **receivedNumber**. Den Block **receivedNumber** erhältst du aus dem ``||radio:wenn Zahl empfangen||`` Block, indem du ihn herausziehst.
+Um die Variable "otherHand" auf die empfangene Zahl zu setzen, ziehe den Block ``||variables:setze otherHand auf||`` in die ``||logic:wenn||``-Bedingung. Ersetze die **0** mit der Variable **empfangeneZahl**. Den Block **empfangeneZahl** erhältst du aus dem ``||radio:wenn Zahl empfangen||`` Block, indem du ihn herausziehst.
 
 Außerdem müssen wir ``||variables:mayReceive||`` auf false setzen.
 
